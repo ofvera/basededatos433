@@ -9,8 +9,10 @@ De esta forma:
 	# #
 	-- conexion.php:
 		# #
-	-- consulta1.php:
-		# #
+	-- consulta_login: -> paula
+		verifica que el usuario exista
+	-- registro: -> paula
+		verifica si el nombre usuario existe, si no, lo crea
 	-- data.php:
 		# #
 	-- footer.php:
