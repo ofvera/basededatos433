@@ -12,6 +12,14 @@ include('head.php');
         </h2>
     <br />
 
+    <p>Busqueda de bandas</p>
+    <form action="consulta_busqueda_bandas.php" method="post">
+      Ingresa el concierto a buscar:
+      <p></p>
+      <input type="text" name="nombre">
+      <input type="submit" value="buscar">
+    </form>
+
 <?php
 include('footer.php');
  ?>

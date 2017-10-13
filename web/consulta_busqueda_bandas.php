@@ -21,7 +21,7 @@ include('head.php');
                WHERE b.id_b = bo.id_b AND bo.id_n = n.id_n AND cb.id_b b.id_b AND cb.id_c = c.id_c AND c.fecha > NOW()";
     $result4 = $db4 -> prepare($query4);
     $result4 -> execute();
-    $data4 = $result -> fetchAll();
+    $data4 = $result4 -> fetchAll();
     # consulta a las bd 33
     $query33 = "SELECT b.id as id_banda, null as id_integrante_actual, p.aid as id_integrante_pasado, correo, disco
                 FROM bandas b, participado p, artista a, contactos, publicado pu, disco d, ($data4) as n
@@ -35,6 +35,8 @@ include('head.php');
                 ";
     $result33 = $db33 -> prepare($query33);
     $result33 -> execute();
+    $data33 = $result33 -> fetchAll();
+    print_r($data33)
 ?>
 
  <table><tr> <th>Banda</th> </tr>
