@@ -4,19 +4,7 @@
 include('head.php');
  ?>
 
-<?php
-
-?>
-
-<table><tr> <th>Banda</th> </tr>
-
-<?php
-foreach ($dataCollected as $p) {
-  echo "<tr> <td>$p[0]</td> </tr>";
-}
-?>
-
-</table>
+<!-- aca va la consulta -->
 
 
 <form action="index.php" method="post">
