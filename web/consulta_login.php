@@ -5,29 +5,12 @@ include('head.php');
  ?>
 
 <!-- aca va la consulta -->
-<?php 
-	require('conexion.php');
 
-	$usuario = $_POST['usuario']
-	$clave = $_POST['clave']
 
-	$query = 'SELECT user, clave FROM Usuario WHERE user = $usuario AND clave = $clave;';
+<form action="index.php" method="post">
+  <input type="submit" value="Volver">
+</form>
 
-	$result = $db33 -> prepare($query);
-	$result -> execute();
-	$dataCollected = $result -> fetch();
-
-	if (is_null($dataCollected)){
-		echo "El usuario o clave incorrecta";
-		echo "<form action="index.php" method="post">
-			<input type="submit" value="Volver">
-			</form>";
-	}
-
-	else {
-		echo "<form action="usuario.php" method="post">
-			<input type="submit" value="Volver">
-			</form>";
-	}
-	
+<?php
+include('final.php');
  ?>
