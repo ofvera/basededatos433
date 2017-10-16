@@ -15,6 +15,7 @@ De esta forma:
 		verifica si el nombre usuario existe, si no, lo crea
 	-- usuario.php: 
 		pag principal de consultas -----> completar
+	-- consulta_busqueda_bandas.php ---> muestra informacion de las bandas, falta un poco
 	-- data.php:
 		# #
 	-- footer.php:
