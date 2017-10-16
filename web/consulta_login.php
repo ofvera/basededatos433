@@ -5,7 +5,7 @@ include('head.php');
  ?>
 
 <!-- aca va la consulta -->
-<?php 
+<?php
 	require('conexion.php');
 
 	$usuario = $_POST['usuario'];
@@ -25,10 +25,8 @@ include('head.php');
 	}
 
 	else {
-		echo '<form action="usuario.php" method="post">
-			Bienvenido a InfoBandas!
-			<input type="submit" value="Seguir">
-			</form>';
+		header("Location: http://bases.ing.puc.cl/~grupo4/entrega3/usuario.php");
+        exit();
 	}
-	
+
  ?>
