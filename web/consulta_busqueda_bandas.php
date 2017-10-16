@@ -35,7 +35,7 @@ include('head.php');
         $result4 -> execute();
         $row4 = $result4 -> fetch()
         while ($row4) {
-            if ($row4[0] = $row33[0]) {
+            if ($row4[0] == $row33[0]) {
                 array_push ($data, array(
                     "id_banda" => $row33[0],
                     "integrante_actual" => $row33[1],
@@ -51,9 +51,12 @@ include('head.php');
 ?>
 
 <?php
-echo "<h2>$nombre</h2>"
+    echo "<h2>$nombre</h2>"
 ?>
 
+<table>
+
+# solo para probar
 <?php
     foreach ($data as $p) {
         echo "<tr> <td>$p['id_banda']</td>
@@ -66,9 +69,35 @@ echo "<h2>$nombre</h2>"
                     </tr>";
     }
 ?>
-
 </table>
 
+# ---------------------------
+<?php
+    echo "Integrantes actuales
+    <table>
+    <tr> <td>Nombre</td> <td>Correo</td> </tr>"
+    foreach ($data as $p) {
+        if ($p['integrante_actual'] <> '') {
+            echo "<tr>
+            <td>$p['integrante_actual']</td>
+            <td>$p['correo']</td>
+            </tr>";
+        }
+    }
+    echo "</table>
+    Integrantes anteriores
+    <table>
+    <tr> <td>Nombre</td> <td>Correo</td> </tr>"
+    foreach ($data as $p) {
+        if ($p['integrante_pasado'] <> '') {
+            echo "<tr>
+            <td>$p['integrante_pasado']</td>
+            <td>$p['correo']</td>
+            </tr>";
+        }
+    }
+    echo "</table>"
+?>
 
 <form action="index.php" method="post">
     <input type="submit" value="Volver">
