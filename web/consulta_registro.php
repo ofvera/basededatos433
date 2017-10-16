@@ -8,11 +8,11 @@ include('head.php');
 <?php 
     require('conexion.php');
 
-    $nombre = $_POST['nombre']
-    $edad = $_POST['edad']
-    $usuario = $_POST['usuario']
-    $correo = $_POST['mail']
-    $clave = $_POST['clave']
+    $nombre = $_POST['nombre'];
+    $edad = $_POST['edad'];
+    $usuario = $_POST['usuario'];
+    $correo = $_POST['mail'];
+    $clave = $_POST['clave'];
 
 
     $query = 'SELECT user FROM Usuario WHERE user = $usuario;';

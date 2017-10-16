@@ -8,8 +8,8 @@ include('head.php');
 <?php 
 	require('conexion.php');
 
-	$usuario = $_POST['usuario']
-	$clave = $_POST['clave']
+	$usuario = $_POST['usuario'];
+	$clave = $_POST['clave'];
 
 	$query = 'SELECT user, clave FROM Usuario WHERE user = $usuario AND clave = $clave;';
 
