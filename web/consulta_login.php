@@ -26,7 +26,8 @@ include('head.php');
 
 	else {
 		echo '<form action="usuario.php" method="post">
-			<input type="submit" value="Volver">
+			Bienvenido a InfoBandas!
+			<input type="submit" value="Seguir">
 			</form>';
 	}
 	

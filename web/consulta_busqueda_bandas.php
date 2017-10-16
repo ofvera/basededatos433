@@ -6,7 +6,7 @@ include('head.php');
 <?php
     require("conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
-    $nombre = $_POST["nombre"];  # nombre de la banda/artista
+    $nombre = $_POST["nombre_banda"];  # nombre de la banda/artista
 
     # consulta a las bd 33
     $query33 = "SELECT b.id as id_banda, null as id_integrante_actual, p.aid as id_integrante_pasado, correo, disco

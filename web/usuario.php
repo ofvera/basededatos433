@@ -9,11 +9,10 @@ include('head.php');
         </h1>
     <br />
 
-    <p>Preguntas</p>
+    <p>Aquí podrás encontrar todo lo que buscas!</p>
     <form action="consulta_busqueda_bandas.php" method="post">
-      Ingresa el concierto a buscar:
-      <p></p>
-      <input type="text" name="nombre">
+      Ingresa la banda a buscar: 
+      <input type="text" name="nombre_banda">
       <input type="submit" value="buscar">
     </form>
 
