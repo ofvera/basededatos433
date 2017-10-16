@@ -1,0 +1,77 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+* {
+	background-color: #ffffff;
+	color: #2A0A12;
+	margin-right: 50px;
+	margin-left: 50px;
+  font-weight: 150;
+  font.size: 20px;
+}
+
+header {
+  background-color: #0B6121;
+  color: #E0F8E6;
+  font-size: 100px;
+  font-weight: 800;
+  color-interpolation-filters: #0B6121;
+}
+
+body {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 50px;
+  font-weight: 500;
+  text-rendering: optimizeLegibility;
+}
+
+h1 {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 40px;
+  font-weight: 150;
+  text-rendering: optimizeLegibility;
+  color: #585858;
+}
+
+h2 {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 30px;
+  font-weight: 130;
+  text-rendering: optimizeLegibility;
+  color: #6E6E6E;
+}
+
+h3 {
+  margin-top: 50px;
+  font-size: 10px;
+  font-weight: 100;
+}
+
+p {
+  font-family: "Roboto", helvetica, arial, sans-serif;
+  font-size: 25px;
+  font-weight: 120;
+  text-rendering: optimizeLegibility;
+}
+
+form {
+	font-size: 20px;
+	font-weight: 105;
+}
+
+table {
+		background-color: white;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+
+th {
+    background-color: #4CAF50;
+    color: #ffffff;
+}
