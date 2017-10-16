@@ -45,7 +45,9 @@ include('head.php');
                     "noticia" => $row4[1],
                     "concierto" => $row4[2]
                 ));
+            $row4 = $result4 -> fetch()
             }
+        $row33 = $result33 -> fetch();
         }
     }
 ?>
