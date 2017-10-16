@@ -11,7 +11,7 @@ include('head.php');
 	$usuario = $_POST['usuario'];
 	$clave = $_POST['clave'];
 
-	$query = 'SELECT user, clave FROM Usuario WHERE user = $usuario AND clave = $clave;';
+	$query = "SELECT user_name, clave FROM Usuario WHERE user_name = '$usuario' AND clave = '$clave;'";
 
 	$result = $db33 -> prepare($query);
 	$result -> execute();
