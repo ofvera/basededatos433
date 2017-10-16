@@ -25,13 +25,8 @@ include('head.php');
 	}
 
 	else {
-<<<<<<< HEAD
 		header("Location: http://bases.ing.puc.cl/~grupo4/entrega3/usuario.php");
         exit();
-=======
-		header('Location: http://bases.ing.puc.cl/~grupo4/entrega3/usuario.php');
-		exit();
->>>>>>> 39341fa73f7e883f2fe959a8933a7186ec5bb750
 	}
 
  ?>
