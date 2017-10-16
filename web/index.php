@@ -13,11 +13,20 @@ include('head.php');
     <br />
 
     <p>Registro</p>
-    <form action="consulta_busqueda_bandas.php" method="post">
-      Ingresa el concierto a buscar:
-      <p></p>
-      <input type="text" name="nombre">
-      <input type="submit" value="buscar">
+    <form action="consulta_registro.php" method="post">
+      <p>Nombre: 			<input type="text" name="nombre"></p>
+      <p>Edad: 			<input type="text" name="edad"></p>
+      <p>Correo: 			<input type="text" name="mail"></p>
+      <p>Nombre Usuario: 	<input type="text" name="usuario"></p>
+      <p>Contraseña:		<input type="text" name="clave"></p>
+      <p><input type="submit" value="registrar">
+    </form>
+
+    Si ya estás registrado:
+    <form action="consulta_login.php" method="post">
+      Nombre Usuario: 	<input type="text" name="usuario">
+      Contraseña:		<input type="text" name="clave">
+      <input type="submit" value="inicio">
     </form>
 
 <?php
