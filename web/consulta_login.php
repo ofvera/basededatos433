@@ -19,15 +19,15 @@ include('head.php');
 
 	if (is_null($dataCollected)){
 		echo "El usuario o clave incorrecta";
-		echo "<form action="index.php" method="post">
+		echo '<form action="index.php" method="post">
 			<input type="submit" value="Volver">
-			</form>";
+			</form>';
 	}
 
 	else {
-		echo "<form action="usuario.php" method="post">
+		echo '<form action="usuario.php" method="post">
 			<input type="submit" value="Volver">
-			</form>";
+			</form>';
 	}
 	
  ?>
