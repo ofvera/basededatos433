@@ -16,6 +16,22 @@ include('head.php');
       <input type="submit" value="buscar">
     </form>
 
+    <br />
+
+    <form action="consulta_disco.php" method="post">
+      Ingresa el disco a buscar:
+      <input type="text" name="Disco">
+      <input type="submit" value="buscar">
+    </form>
+
+    <br />
+
+    <form action="consulta_genero.php" method="post">
+      Ingresa el genero a buscar:
+      <input type="text" name="Genero">
+      <input type="submit" value="buscar">
+    </form>
+
 <?php
 include('footer.php');
  ?>
