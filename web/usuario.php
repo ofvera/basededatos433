@@ -11,8 +11,8 @@ include('head.php');
 
     <p>Aquí podrás encontrar todo lo que buscas!</p>
     <form action="consulta_busqueda_bandas.php" method="post">
-      Ingresa la banda a buscar: 
-      <input type="text" name="nombre_banda">
+      Ingresa la banda a buscar:
+      <input type="text" name="nombre">
       <input type="submit" value="buscar">
     </form>
 
