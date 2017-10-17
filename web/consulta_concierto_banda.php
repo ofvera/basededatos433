@@ -22,10 +22,10 @@ include('head.php');
 		if is_null($banda){
 			$querry = "SELECT C.nombre, C.fecha FROM concierto C WHERE C.fecha > '$fecha_inicio' AND C.fecha < '$fecha_termino';";
 		}
-		
+
 		else {
 			$querry = "SELECT C.nombre C.fecha FROM banda B, banda_invitada BI, concierto C WHERE B.nombre = '$banda' AND B.id_b = BI.id_b AND BI.id_c = C.id_c AND C.fecha > '$fecha_inicio' AND C.fecha < '$fecha_termino'
-				UNION 
+				UNION
 				SELECT C.nombre, C.fecha FROM banda B, concierto_banda CB, concierto C WHERE B.nombre = '$banda' AND B.id_b = CB.id_b AND CB.id_c = C.id_c AND C.fecha > '$fecha_inicio' AND C.fecha < '$fecha_termino';"
 
 			## no estoy seguro de esto ##
@@ -34,24 +34,24 @@ include('head.php');
 			$result -> execute();
 			$dataCollected = $result -> fetch();
 
-			if (empty($querry)){
+			if (empty($dataCollected)){
 				echo "No hay conciertos en esas fechas"
 			}
 			else {
 				echo "<h3>Conciertos</h3>
    				<table>
     			<tr> <td>Nombre</td> <td>Fecha</td> </tr>";
-    			foreach ($querry as $p) {
+    			foreach ($dataCollected as $p) {
         	   		echo "<tr>
             		<td>$p[0]</td>
             		<td>$p[1]</td>
             		</tr>";
-        
-    			}	
+
+    			}
 			}
-			
+
 			## hasta aca ##
-		}	
+		}
 ?>
 
 
@@ -62,4 +62,3 @@ include('head.php');
 <?php
 include('footer.php');
 ?>
-	
