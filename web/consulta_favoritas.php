@@ -12,7 +12,7 @@ include('head.php');
 
     # dividimos la consulta en 3 partes
     # 1. obtener las bandas favoritas 
-    $query_favoritas33 = "SELECT F.bid FROM favoritos F, usuario U WHERE F.user_name = '$usuario';"
+    $query_favoritas33 = "SELECT F.bid FROM favoritos F WHERE F.user_name = '$usuario';"
 
     $result33 = $db33 -> prepare($query_favoritas33);
     $result33 -> execute();
