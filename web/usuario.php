@@ -34,6 +34,14 @@ include('head.php');
 
     <br />
 
+    <form action="agregar_favorito.php" method="post">
+      Agrega tu artista o Banda favorita!:
+      <input type="text" name="Banda">
+      <input type="submit" value="buscar">
+    </form>
+
+    <br />
+
     <form action="consulta_favoritas.php" method="post">
       Busca tus bandas favoritas!
       <input type="submit" value="buscar">
