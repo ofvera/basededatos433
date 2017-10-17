@@ -36,7 +36,6 @@ include('head.php');
 
     <form action="consulta_favoritas.php" method="post">
       Busca tus bandas favoritas!
-      <input type="text" name="usuario">
       <input type="submit" value="buscar">
     </form>
 

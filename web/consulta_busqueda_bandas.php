@@ -58,23 +58,6 @@ include('head.php');
 
 <table>
 
-# solo para probar
-<?php
-    foreach ($data as $p) {
-        echo "<tr> <td>$p[id_banda]</td>
-                    <td>$p[integrante_actual]</td>
-                    <td>$p[integrante_pasado]</td>
-                    <td>$p[correo]</td>
-                    <td>$p[disco]</td>
-                    <td>$p[noticia]</td>
-                    <td>$p[concierto]</td>
-                    </tr>";
-    }
-?>
-</table>
-
-# ---------------------------
-
 <?php
     echo "<h3>Integrantes actuales</h3>
     <table>
