@@ -46,9 +46,9 @@ include('head.php');
     			$row_noticias4 = $result_n4 -> fetch()
     		}
 
-    		$query_conciertos4 = "SELECT B.nombre, C.nombre, C.lugar, C.fecha FROM concierto C, banda_invitada BI, concierto_banda CB, banda B WHERE ((C.id_c = BI.id_c AND BI.id_b = B.id_b) AND B.id_b = '$row_favorita33[0]'
-    			UNION
-    			SELECT B.nombre, C.nombre, C.lugar, C.fecha FROM concierto C, banda_invitada BI, concierto_banda CB, banda B WHERE (C.id_c = CB.id_c AND CB.id_b = B.id_b)) AND B.id_b = '$row_favorita33[0]';"
+    		$query_conciertos4 = "SELECT B.nombre, C.nombre, C.lugar, C.fecha FROM concierto C, banda_invitada BI, banda B WHERE C.id_c = BI.id_c AND BI.id_b = B.id_b AND B.id_b = '$row_favorita33[0]'
+                UNION
+                SELECT B.nombre, C.nombre, C.lugar, C.fecha FROM concierto C, concierto_banda CB, banda B WHERE C.id_c = CB.id_c AND CB.id_b = B.id_b AND B.id_b = '$row_favorita33[0]';"
     		$result_c4 = $db4 -> prepare($query_conciertos4);
     		$result_c4 -> execute();
     		$row_conciertos4 = $result_c4 -> fetch()
