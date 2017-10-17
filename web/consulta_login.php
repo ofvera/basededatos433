@@ -11,13 +11,13 @@ include('head.php');
 	$usuario = $_POST['usuario'];
 	$clave = $_POST['clave'];
 
-	$query = "SELECT user_name, clave FROM Usuario WHERE user_name = '$usuario' AND clave = '$clave;'";
+	$query = "SELECT user_name, clave FROM Usuario WHERE user_name = '$usuario' AND clave = '$clave';";
 
 	$result = $db33 -> prepare($query);
 	$result -> execute();
 	$dataCollected = $result -> fetch();
 
-	if (is_null($dataCollected)){
+	if (empty($dataCollected)) {
 		echo "El usuario o clave incorrecta";
 		echo '<form action="index.php" method="post">
 			<input type="submit" value="Volver">
