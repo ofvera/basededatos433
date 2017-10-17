@@ -63,7 +63,7 @@ include('head.php');
     		}
 
     		# 3. obtenemos los discos
-    		$query_discos33 = "SELECT B.nombre, D.nombre, D.sello FROM disco D, publicado P, banda B WHERE D.did = P.bid AND P.bid = B.bid AND B.bid = '$row_favorita33[0]' "
+    		$query_discos33 = "SELECT B.nombre, D.nombre, D.sello FROM disco D, publicado P, banda B WHERE D.did = P.bid AND P.bid = B.bid AND B.bid = '$row_favorita33[0]';"
 	    	$result_d33 = $db33 -> prepare($query_discos33);
     		$result_d33 -> execute();
     		$row_discos33 = $result_d33 -> fetch()
