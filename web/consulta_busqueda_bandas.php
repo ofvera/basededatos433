@@ -45,7 +45,7 @@ include('head.php');
                     "noticia" => $row4[1],
                     "concierto" => $row4[2]
                 ));
-            $row4 = $result4 -> fetch()
+            $row4 = $result4 -> fetch();
             }
         $row33 = $result33 -> fetch();
         }
@@ -120,10 +120,6 @@ include('head.php');
     }
     echo "</table>";
 ?>
-
-<form action="index.php" method="post">
-    <input type="submit" value="Volver">
-</form>
 
 <?php
 include('footer.php');
