@@ -25,6 +25,7 @@ include('head.php');
 	}
 
 	else {
+        $_SESSION['usr'] = $usuario;
 		header("Location: http://bases.ing.puc.cl/~grupo4/entrega3/usuario.php");
         exit();
 	}

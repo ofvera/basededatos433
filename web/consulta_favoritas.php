@@ -8,10 +8,10 @@ include('head.php');
 <?php
     require("conexion.php"); #Llama a conexión, crea el objeto PDO y obtiene la variable $db
 
-    $usuario = $_POST["usuario"];  # usuario 
+    $usuario = $_SESSION['usr'];  # obtener datos del usuario logueado
 
     # dividimos la consulta en 3 partes
-    # 1. obtener las bandas favoritas 
+    # 1. obtener las bandas favoritas
     $query_favoritas33 = "SELECT F.bid FROM favoritos F WHERE F.user_name = '$usuario';"
 
     $result33 = $db33 -> prepare($query_favoritas33);
@@ -21,22 +21,22 @@ include('head.php');
     $noticias = array()
     $conciertos = array()
     $discos = array()
-    
+
     if (is_null($row_favorita33)){
     	echo "No tienes bandas en tus favoritos"
 
     }
     else {
-    	
+
     	while ($row_favorita33)	{
 
-    		# a partir de las bandas 
+    		# a partir de las bandas
    			# 2. obtenemos las noticias relacionadas a las bandas y los conciertos
     		$query_noticias4 = "SELECT B.nombre, N.titulo, N.contenido FROM banda B, banda_involucrada BI, noticia N WHERE N.id_n = BI.id_n AND BI.id_b = B.id_b AND B.id_b = '$row_favorita33[0]';"
 	    	$result_n4 = $db4 -> prepare($query_noticias4);
    			$result_n4 -> execute();
     		$row_noticias4 = $result_n4 -> fetch()
-    		
+
     		while ($row_noticias4){
     			array_push ($noticias, array(
                 	    "banda" => $row_noticias4[0],
@@ -45,7 +45,7 @@ include('head.php');
                     	))
     			$row_noticias4 = $result_n4 -> fetch()
     		}
-    	
+
     		$query_conciertos4 = "SELECT B.nombre, C.nombre, C.lugar, C.fecha FROM concierto C, banda_invitada BI, concierto_banda CB, banda B WHERE ((C.id_c = BI.id_c AND BI.id_b = B.id_b) AND B.id_b = '$row_favorita33[0]'
     			UNION
     			SELECT B.nombre, C.nombre, C.lugar, C.fecha FROM concierto C, banda_invitada BI, concierto_banda CB, banda B WHERE (C.id_c = CB.id_c AND CB.id_b = B.id_b)) AND B.id_b = '$row_favorita33[0]';"
@@ -78,8 +78,8 @@ include('head.php');
     		$row_favorita33 = $result33 -> fetch()
     	}
     }
- ?>  
-    
+ ?>
+
     <?php
     echo "<h3>Noticias</h3>
     <table>

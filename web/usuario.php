@@ -32,6 +32,14 @@ include('head.php');
       <input type="submit" value="buscar">
     </form>
 
+    <br />
+
+    <form action="consulta_favoritas.php" method="post">
+      Busca tus bandas favoritas!
+      <input type="text" name="usuario">
+      <input type="submit" value="buscar">
+    </form>
+
 <?php
 include('footer.php');
  ?>
