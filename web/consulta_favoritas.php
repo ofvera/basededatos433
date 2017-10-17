@@ -115,9 +115,6 @@ session_start();
     echo "</table>";
 ?>
 
-<form action="usuario.php" method="post">
-    <input type="submit" value="Volver">
-</form>
 
 <?php
 include('footer.php');
