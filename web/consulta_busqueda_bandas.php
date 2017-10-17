@@ -95,6 +95,30 @@ include('head.php');
         }
     }
     echo "</table>";
+    echo "<table>
+    <h3>Noticias</h3>
+    <table>
+    <tr> <td>Titulos</td> </tr>";
+    foreach ($data as $p) {
+        if ($p[noticia] <> '') {
+            echo "<tr>
+            <td>$p[disco]</td>
+            </tr>";
+        }
+    }
+    echo "</table>";
+    echo "<table>
+    <h3>Conciertos</h3>
+    <table>
+    <tr> <td>Nombre</td> </tr>";
+    foreach ($data as $p) {
+        if ($p[concierto] <> '') {
+            echo "<tr>
+            <td>$p[disco]</td>
+            </tr>";
+        }
+    }
+    echo "</table>";
 ?>
 
 <form action="index.php" method="post">
