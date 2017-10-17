@@ -3,31 +3,49 @@
 include('head.php');
  ?>
 
-<section id="home">
-    <div id="bgimage" class="header-image">
-        <div class="container">
-            <div class="row">
+    <br />
+        <h1>
+          La plataforma confiable que te informará de todos los acontecimientos importantes en el mundo de la musica
+        </h1>
+    <br />
 
-                <div class="col-sm-5 col-xs-12">
-                    <div class="iphone center-content wow fadeInLeft" data-wow-duration="1s">
-                        <img src="images/iphone.png" alt="" />
-                    </div>
-                </div>
+    <p>Aquí podrás encontrar todo lo que buscas!</p>
+    <form action="consulta_busqueda_bandas.php" method="post">
+      Ingresa la banda a buscar:
+      <input type="text" name="nombre">
+      <input type="submit" value="buscar">
+    </form>
 
-                <div class="col-sm-7 col-xs-12 heading-text">
-                    <div class="single_home_content wow zoomIn" data-wow-duration="1s">
-        <h1>Bienvenidos a InfoBandas!! </h1>
-        <p class="bannerDescription">La plataforma confiable que te informará de todos los acontecimientos importantes en el mundo de la música</p>
-      </div>
-                </div>
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-        <div class="scrolldown">
-            <a href="#favoritos" class="scroll_btn"></a>
-        </div>
-    </div>
-</section>
+    <br />
 
+    <form action="consulta_disco.php" method="post">
+      Ingresa el disco a buscar:
+      <input type="text" name="Disco">
+      <input type="submit" value="buscar">
+    </form>
+
+    <br />
+
+    <form action="consulta_genero.php" method="post">
+      Ingresa el genero a buscar:
+      <input type="text" name="Genero">
+      <input type="submit" value="buscar">
+    </form>
+
+    <br />
+
+    <form action="agregar_favorito.php" method="post">
+      Agrega tu artista o Banda favorita!:
+      <input type="text" name="Banda">
+      <input type="submit" value="buscar">
+    </form>
+
+    <br />
+
+    <form action="consulta_favoritas.php" method="post">
+      Busca tus bandas favoritas!
+      <input type="submit" value="buscar">
+    </form>
 
 <?php
 include('footer.php');

@@ -20,8 +20,9 @@ session_start();
 
 	if (empty($dataCollected)) {
 		echo "El usuario o clave incorrecta";
-		header("Location: http://bases.ing.puc.cl/~grupo4/entrega3/index.php");
-        exit();
+		echo '<form action="index.php" method="post">
+			<input type="submit" value="Volver">
+			</form>';
 	}
 
 	else {

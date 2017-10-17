@@ -24,20 +24,18 @@ include('head.php');
         $query2 = "INSERT INTO Usuario VALUES ('$usuario', '$clave', '$nombre', $edad, '$correo');";
         $result2 = $db33 -> prepare($query2);
         $result2 -> execute();
+
         echo "Usuario registrado";
-        header('Location: http://bases.ing.puc.cl/~grupo4/paula/usuario.php');
-        exit();
+        echo '<form action="index.php" method="post">
+              <input type="submit" value="Volver">
+              </form>';
     }
 
     else {
         echo "No está disponible este nombre de usuario";
-        header('Location: http://bases.ing.puc.cl/~grupo4/paula/index.php');
-        exit();
+        echo '<form action="index.php" method="post">
+              <input type="submit" value="Volver">
+              </form>';
     }
     
- ?>
-
-
-<?php
-include('footer.php');
  ?>

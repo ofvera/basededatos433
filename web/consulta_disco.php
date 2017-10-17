@@ -4,10 +4,6 @@
 include('head.php');
  ?>
 
-<?php
-include('head.php');
- ?>
-
 <!-- aca va la consulta -->
 <?php 
 	require('conexion.php');
@@ -157,6 +153,9 @@ else {
 
 ?>
 
+<form action="usuario.php" method="post">
+    <input type="submit" value="Volver">
+</form>
 
 <?php
 include('footer.php');
