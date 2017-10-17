@@ -2,6 +2,7 @@
 
 <?php
 include('head.php');
+session_start();
  ?>
 
 <!-- aca va la consulta -->
@@ -25,7 +26,8 @@ include('head.php');
 	}
 
 	else {
-        $_SESSION['usr'] = $usuario;
+        $_SESSION['usr'] = array();
+        array_push($_SESSION['usr'], $usuario);
 		header("Location: http://bases.ing.puc.cl/~grupo4/entrega3/usuario.php");
         exit();
 	}
