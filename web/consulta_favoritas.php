@@ -76,7 +76,7 @@ include('head.php');
     		$row_favorita33 = $result33 -> fetch()
     	}
     }
-    
+ ?>  
     
     <?php
     echo "<h3>Noticias</h3>
