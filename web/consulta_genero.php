@@ -41,7 +41,7 @@ include('head.php');
    	}
 ?>
 
-<form action="index.php" method="post">
+<form action="usuario.php" method="post">
     <input type="submit" value="Volver">
 </form>
 
