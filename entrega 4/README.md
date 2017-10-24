@@ -1,4 +1,6 @@
 # entrega 4
+La base de datos está en la carpeta **mongodb_database**, cuando usen mongo córranlo sobre esa carpeta.
+
 
 ## Desarrollo de la API
 |  | quien | lista? | comentario |
