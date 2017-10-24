@@ -65,9 +65,59 @@ def find_msg(mid=None):
     pass
 
 
-@app.route("/msg/")
-def find_msg_by_user():
-    pass
+@app.route("/users/<uid1>-<uid2>")
+def find_msg_by_user(uid1 = None, uid2 = None):
+    """
+    A partir de 2 uid encontrar los mensajes entre ellos
+    """
+    try:   
+        uid1 = int(uid1)
+        uid2 = int(uid2)
+        if uid1 == -1 or uid2 == -1:
+            return 'Se debe especificar los dos artistas'
+        else:
+            print(uid1)
+            print(uid2)
+            msg_data = messages.find({'sender': uid1, 'receptant': uid2}, {'_id': 0})
+            msg_data2 = messages.find({'sender': uid2, 'receptant': uid1}, {'_id': 0})
+            user1_data = users.find({'id': uid1}, {'_id': 0})
+            user2_data = users.find({'id': uid2}, {'_id': 0})
+            result_msg = [res for res in msg_data]
+            result_msg2 = [res for res in msg_data2]
+            result_user1 = [res for res in user1_data]
+            result_user2 = [res for res in user2_data]
+            result = []
+            print(result_msg)
+            print(result_msg2)
+            print(result_user1)
+            print(result_user2)
+            for user1 in result_user1:
+                for user2 in result_user2:
+                    for msg in result_msg:
+                        if msg["sender"] == user1["id"]:
+                            msg["sender"] == user1["name"]
+                        elif msg["sender"] == user2["id"]:
+                            msg["sender"] == user2["name"]
+                        if msg["receptant"] == user1["id"]:
+                            msg["receptant"] == user1["name"]
+                        elif msg["receptant"] == user2["id"]:
+                            msg["receptant"] == user2["name"]
+                        result.append(msg)
+                    for msg in result_msg2:
+                        if msg["sender"] == user1["id"]:
+                            msg["sender"] == user1["name"]
+                        elif msg["sender"] == user2["id"]:
+                            msg["sender"] == user2["name"]
+                        if msg["receptant"] == user1["id"]:
+                            msg["receptant"] == user1["name"]
+                        elif msg["receptant"] == user2["id"]:
+                            msg["receptant"] == user2["name"]
+                        result.append(msg)
+            return jsonify("msgs", result)
+
+    except:
+        return 'Error de sistema, apagando su computador'
+
 
 
 if __name__ == '__main__':
