@@ -4,15 +4,6 @@ Trabajo Grupal Base de Datos Grupo 4 y 33
 Aca entregaremos una descripcion de lo que vamos realizando en cada carpeta para poder interpretar de mejor forma lo que vamos desarrollando en el trabajo mismo.
 
 De esta forma:
-## entrega 4
-|  | quien | lista? | comentario |
-|:----------:|:-------:|:------:|:----------:|
-| consulta 1 | - | - | - |
-| consulta 2 | javier | si | - |
-| consulta 3 | octavio | - | - |
-| búsqueda 1 | - | - | - |
-| búsqueda 2 | - | - | - |
-| búsqueda 3 | - | - | - |
 
 -- web: 
 	# #
