@@ -2,6 +2,7 @@
 
 <?php
 include('head.php');
+session_start();
  ?>
 
 <!-- aca va la consulta -->
