@@ -5,7 +5,7 @@ La base de datos está en la carpeta **mongodb_database**, cuando usen mongo có
 ## Desarrollo de la API
 |  | quien | lista? | comentario |
 |:----------:|:-------:|:------:|:----------:|
-| consulta 1 | javier | no | empezando |
+| consulta 1 | javier | no | el enunciado dice que busquemos por id pero no existe id en los json |
 | consulta 2 | javier | si | - |
 | consulta 3 | octavio | - | - |
 | búsqueda 1 | - | - | - |
