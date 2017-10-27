@@ -65,9 +65,9 @@ def find_users(uid=None):
 @app.route("/messages/<mid>")
 def find_msg(mid=None):
     """
-    a partir de un objectid --> mostrar datos del mensaje
+    a partir de un objectid(mid) --> mostrar datos del mensaje
     """
-    mid = ObjectId(str('59ef97e62b982c5985c8165e'))
+    mid = ObjectId(str(mid))
     result_msg = [i for i in messages.find(
         {'_id': mid},
         {'_id': 0})]
