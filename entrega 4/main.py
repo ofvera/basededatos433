@@ -1,12 +1,14 @@
 from flask import Flask, jsonify
 from pymongo import MongoClient
+from bson.objectid import ObjectId
+
 
 app = Flask(__name__)
 
 client = MongoClient()
-db = client.data  # mi base de datos se llama data
-messages = db.messages  # dentro de test, una coleccion es users
-users = db.users  # dentro de test, otra coleccion es tweets
+db = client.data
+messages = db.messages
+users = db.users
 
 
 @app.route("/")
@@ -62,7 +64,22 @@ def find_users(uid=None):
 
 @app.route("/messages/<mid>")
 def find_msg(mid=None):
-    pass
+    """
+    a partir de un objectid --> mostrar datos del mensaje
+    """
+    mid = ObjectId(str('59ef97e62b982c5985c8165e'))
+    result_msg = [i for i in messages.find(
+        {'_id': mid},
+        {'_id': 0})]
+    result_sender = [i for i in users.find(
+        {'id': result_msg[0]['sender']},
+        {'_id': 0})]
+    result_receptant = [i for i in users.find(
+        {'id': result_msg[0]['receptant']},
+        {'_id': 0})]
+    result_msg[0]['sender'] = result_sender[0]['name']
+    result_msg[0]['receptant'] = result_receptant[0]['name']
+    return jsonify('msg_info', result_msg)
 
 
 @app.route("/users/<uid1>-<uid2>")
