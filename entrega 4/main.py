@@ -83,7 +83,7 @@ def find_msg(mid=None):
 
 
 @app.route("/users/<uid1>-<uid2>")
-def find_msg_by_user(uid1 = None, uid2 = None):
+def find_msg_by_user(uid1=None, uid2=None):
     """
     A partir de 2 uid encontrar los mensajes entre ellos
     """
@@ -131,10 +131,29 @@ def find_msg_by_user(uid1 = None, uid2 = None):
                             msg["receptant"] == user2["name"]
                         result.append(msg)
             return jsonify("msgs", result)
-
-    except:
+    except Exception:
         return 'Error de sistema, apagando su computador'
 
+
+# text search
+@app.route("/must-be/<text>")
+def must_be(text=None):
+    """
+    text debe ser:
+        frase!20!1%20frase!20!2%20frase!20!3%20...%20frase!20!N
+    """
+    try:
+        t = '\"'
+        t += '\" \"'.join(str(text).split(' ')) + '\"'
+        new_t = t.replace('!20!', ' ')
+        result = messages.find({'$text': {'$search': "{}".format(new_t)}},
+                               {'score': {'$meta': "textScore"},
+                                '_id': 0}).sort(
+            [('score', {'$meta': "textScore"})])
+        result = [r for r in result]
+        return jsonify('must_be', result)
+    except Exception as err:
+        return 'Ocurrio un error: {}'.format(err)
 
 
 if __name__ == '__main__':
