@@ -8,6 +8,6 @@ La base de datos está en la carpeta **mongodb_database**, cuando usen mongo có
 | consulta 1 | javier | si | - |
 | consulta 2 | javier | si | - |
 | consulta 3 | octavio | - | - |
-| búsqueda 1 | - | - | - |
+| búsqueda 1 | javier | si | - |
 | búsqueda 2 | - | - | - |
 | búsqueda 3 | - | - | - |
