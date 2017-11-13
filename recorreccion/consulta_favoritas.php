@@ -2,6 +2,9 @@
 
 <!--FINALIDAD: Mostrar conciertos, ultimos discos, noticias de las bandas favoritas -->
 
+
+<!-- Funciona perfecto, probar con usuario pcsalvo - paula4 para verificarlo -->
+
 <?php
 include('head.php');
 session_start();

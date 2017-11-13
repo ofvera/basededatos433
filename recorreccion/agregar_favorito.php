@@ -5,6 +5,8 @@ include('head.php');
 session_start();
  ?>
 
+<!-- arreglado luego de pequeños cambios de ejecucion -->
+
 <!-- aca va la consulta -->
 <?php
 	require('conexion.php');
@@ -20,22 +22,24 @@ session_start();
 
 	else {	
 		$querry = "SELECT B.bid FROM banda B WHERE B.nombre = '$banda';";
-		
-		if (empty($querry)){
+		// mover esto a este lugar
+		$result = $db33 -> prepare($querry);
+		$result -> execute();
+		$bid = $result -> fetch();
+		// hasta aca, cambiando la ejecucion a db33
+
+		if (empty($bid)){
+			// vemos que bid sea empty no querry
 			echo "No existe esa banda";
 		
 			}
 		
 		else{
-
-			$result = $db4 -> prepare($querry);
-			$result -> execute();
-			$bid = $result -> fetch();
-
-			$insert = "INSERT INTO favoritos VALUE('$usuario','$bid');";
-			$apply = $db4 -> prepare($querry);
+			// VALUES no value
+			$insert = "INSERT INTO favoritos VALUES('$usuario', $bid[0]);";
+			// cambiar db33 y $insert
+			$apply = $db33 -> prepare($insert);
 			$apply -> execute();
-
 			echo "La banda fue guardada existosamente!";
 		}			
 	}	
