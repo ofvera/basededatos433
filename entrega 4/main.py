@@ -67,19 +67,22 @@ def find_msg(mid=None):
     """
     a partir de un objectid(mid) --> mostrar datos del mensaje
     """
-    mid = ObjectId(str(mid))
-    result_msg = [i for i in messages.find(
-        {'_id': mid},
-        {'_id': 0})]
-    result_sender = [i for i in users.find(
-        {'id': result_msg[0]['sender']},
-        {'_id': 0})]
-    result_receptant = [i for i in users.find(
-        {'id': result_msg[0]['receptant']},
-        {'_id': 0})]
-    result_msg[0]['sender'] = result_sender[0]['name']
-    result_msg[0]['receptant'] = result_receptant[0]['name']
-    return jsonify('msg_info', result_msg)
+    try:
+        mid = ObjectId(str(mid))
+        result_msg = [i for i in messages.find(
+            {'_id': mid},
+            {'_id': 0})]
+        result_sender = [i for i in users.find(
+            {'id': result_msg[0]['sender']},
+            {'_id': 0})]
+        result_receptant = [i for i in users.find(
+            {'id': result_msg[0]['receptant']},
+            {'_id': 0})]
+        result_msg[0]['sender'] = result_sender[0]['name']
+        result_msg[0]['receptant'] = result_receptant[0]['name']
+        return jsonify('msg_info', result_msg)
+    except Exception:
+        return 'Ocurrio un error: {}'.format(err)
 
 
 @app.route("/users/<uid1>-<uid2>")
@@ -93,8 +96,6 @@ def find_msg_by_user(uid1=None, uid2=None):
         if uid1 == -1 or uid2 == -1:
             return 'Se debe especificar los dos artistas'
         else:
-            print(uid1)
-            print(uid2)
             msg_data = messages.find({'sender': uid1, 'receptant': uid2}, {'_id': 0})
             msg_data2 = messages.find({'sender': uid2, 'receptant': uid1}, {'_id': 0})
             user1_data = users.find({'id': uid1}, {'_id': 0})
@@ -104,35 +105,32 @@ def find_msg_by_user(uid1=None, uid2=None):
             result_user1 = [res for res in user1_data]
             result_user2 = [res for res in user2_data]
             result = []
-            print(result_msg)
-            print(result_msg2)
-            print(result_user1)
-            print(result_user2)
             for user1 in result_user1:
                 for user2 in result_user2:
                     for msg in result_msg:
                         if msg["sender"] == user1["id"]:
-                            msg["sender"] == user1["name"]
+                            msg["sender"] = user1["name"]
                         elif msg["sender"] == user2["id"]:
-                            msg["sender"] == user2["name"]
+                            msg["sender"] = user2["name"]
                         if msg["receptant"] == user1["id"]:
-                            msg["receptant"] == user1["name"]
+                            msg["receptant"] = user1["name"]
                         elif msg["receptant"] == user2["id"]:
-                            msg["receptant"] == user2["name"]
+                            msg["receptant"] = user2["name"]
                         result.append(msg)
                     for msg in result_msg2:
                         if msg["sender"] == user1["id"]:
-                            msg["sender"] == user1["name"]
+                            msg["sender"] = user1["name"]
                         elif msg["sender"] == user2["id"]:
-                            msg["sender"] == user2["name"]
+                            msg["sender"] = user2["name"]
                         if msg["receptant"] == user1["id"]:
-                            msg["receptant"] == user1["name"]
+                            msg["receptant"] = user1["name"]
                         elif msg["receptant"] == user2["id"]:
-                            msg["receptant"] == user2["name"]
+                            msg["receptant"] = user2["name"]
                         result.append(msg)
+            print(result)
             return jsonify("msgs", result)
     except Exception:
-        return 'Error de sistema, apagando su computador'
+        return 'Ocurrio un error: {}'.format(err)
 
 
 # text search
@@ -145,7 +143,9 @@ def must_be(text=None):
     try:
         t = '\"'
         t += '\" \"'.join(str(text).split(' ')) + '\"'
+        print(t)
         new_t = t.replace('!20!', ' ')
+        print(new_t)
         result = messages.find({'$text': {'$search': "{}".format(new_t)}},
                                {'score': {'$meta': "textScore"},
                                 '_id': 0}).sort(
@@ -155,6 +155,40 @@ def must_be(text=None):
     except Exception as err:
         return 'Ocurrio un error: {}'.format(err)
 
+
+# text search
+@app.route("/textsearch/<must>!33!<may>!33!<_not>")
+def text_search(must=None, may=None, _not=None):
+    """
+    texto debe ser:
+        <must1>%20<must2>...!33!<may1>%20<may2>...!33!<not1>%20<not2>...
+    si no hay elemento:
+    """
+    no_words = "!4!"
+    try:
+        must = str(must)
+        may = str(may)
+        _not = str(_not) 
+        search = ""
+        if must != no_words:
+            must_words = must.split(' ')
+            for word in must_words:
+                search += '\"' + word + '\" '
+        if may != no_words:
+            search += may + ' '
+        if _not != no_words:
+            not_words = _not.split(' ')
+            for word in not_words:
+                search += '-' + word + ' '
+        print(search)
+        result = messages.find({'$text': {'$search': "{}".format(search)}},
+                               {'score': {'$meta': "textScore"},
+                                '_id': 0}).sort(
+            [('score', {'$meta': "textScore"})])
+        result = [r for r in result]
+        return jsonify('must_be', result)
+    except Exception as err:
+        return 'Ocurrio un error: {}'.format(err)
 
 if __name__ == '__main__':
     app.run(port=8080)
