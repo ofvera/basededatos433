@@ -36,7 +36,8 @@ Donde:
 ## Dessarrollo de las variables de entorno
 | install | quien | listo? | comentario |
 |:-------:|:--------:|:----:|:--------------------------:|
-| python | octavio | si | ejecutar codigo: >python3 file |
+| python | octavio | si | ejecutar codigo: 
+`>python3 file` |
 | mongo | octavio | si | poblado con jsons y index |
 | flask | octavio | ? |	|
 
