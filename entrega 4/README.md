@@ -28,7 +28,7 @@ Donde:
 ## Desarrollo de la API
 |  | quien | lista? | comentario |
 |:----------:|:-------:|:------:|:----------:|
-| consulta 1 | javier | si | - |)
+| consulta 1 | javier | si | - |
 | consulta 2 | javier | si | - |
 | consulta 3 | octavio | si | - |
 | búsqueda 1/2/3 | javier y octavio | si | - |
@@ -36,9 +36,8 @@ Donde:
 ## Dessarrollo de las variables de entorno
 | install | quien | listo? | comentario |
 |:-------:|:--------:|:----:|:--------------------------:|
-| python | octavio | si | ejecutar codigo: 
-`>python3 file` |
+| python | octavio | si | ejecutar codigo: `> python3 file` |
 | mongo | octavio | si | poblado con jsons y index |
-| flask | octavio | ? |	|
+| flask | octavio | ? |	- |
 
 
