@@ -5,11 +5,15 @@ La base de datos está en la carpeta **mongodb_database**, cuando usen mongo có
 Si se desea implementar la API localmente, seguir las instrucciones.
 
 1. En mongo se debe realizar lo siguiente:
-`> use data
-> db.createCollection("messages")
-> db.createCollection("users")`
+
+`> use data`
+
+`> db.createCollection("messages")`
+
+`> db.createCollection("users")`
 
 2. Una vez cargados los .json (ver actividad mongo)
+
 `> db.messages.createIndex({"message": "text"})`
 
 3. Ahora podemos ejecutar nuestro main.py
