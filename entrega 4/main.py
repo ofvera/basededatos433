@@ -157,14 +157,14 @@ def must_be(text=None):
 
 
 # text search
-@app.route("/textsearch/<must>!33!<may>!33!<_not>")
+@app.route("/textsearch/<must>/<may>/<_not>")
 def text_search(must=None, may=None, _not=None):
     """
     texto debe ser:
-        <must1>%20<must2>...!33!<may1>%20<may2>...!33!<not1>%20<not2>...
+        <must1>%20<must2>.../<may1>%20<may2>.../<not1>%20<not2>...
     si no hay elemento:
     """
-    no_words = "!4!"
+    no_words = "!433!"
     try:
         must = str(must)
         may = str(may)
