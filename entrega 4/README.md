@@ -18,11 +18,11 @@ Si se desea implementar la API localmente, seguir las instrucciones.
 
 3. Ahora podemos ejecutar nuestro main.py
 Luego accedemos a los path mediante:
-	+ url: http://localhost:8080/#function#/#input#
++ url: http://localhost:8080/#function#/#input#
 
 Donde:
-	+ **#function#**: es la función de la API.
-	+ **#input#**: los parametros que recibe la función.
++ **#function#**: es la función de la API.
++ **#input#**: los parametros que recibe la función.
 
 
 ## Desarrollo de la API
