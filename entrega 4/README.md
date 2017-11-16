@@ -2,19 +2,23 @@
 Los archivos json se encuentran enla carpeta **json_data**
 La base de datos está en la carpeta **mongodb_database**, cuando usen mongo córranlo sobre esa carpeta.
 
-Si se desea implementar la api localmente, seguir las instrucciones.
+Si se desea implementar la API localmente, seguir las instrucciones.
 
 1. En mongo se debe realizar lo siguiente:
-> use data
+`> use data
 > db.createCollection("messages")
-> db.createCollection("users")
+> db.createCollection("users")`
 
 2. Una vez cargados los .json (ver actividad mongo)
-> db.messages.createIndex({"message": "text"})
+`> db.messages.createIndex({"message": "text"})`
 
 3. Ahora podemos ejecutar nuestro main.py
 Luego accedemos a los path mediante:
-url: http://localhost:8080/<function>/<input>
+url: http://localhost:8080/#function#/#input#
+
+Donde:
++ **#function#**: es la función de la API.
++ **#input#**: los parametros que recibe la función.
 
 
 ## Desarrollo de la API
