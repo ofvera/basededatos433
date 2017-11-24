@@ -38,6 +38,5 @@ Donde:
 |:-------:|:--------:|:----:|:--------------------------:|
 | python | octavio | si | ejecutar codigo: `> python3 file` |
 | mongo | octavio | si | poblado con jsons y index |
+| apache | octavio | ? | - |
 | flask | octavio | ? |	- |
-
-
