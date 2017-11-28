@@ -3,31 +3,220 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>Como usar la API - Entrega 4</title>
+<style>
+body {
+    background-color: azure;
+}
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+}
+
+tr#t01 {
+    background-color: #dddddd;
+}
+tr#t02 {
+    background-color: ghostwhite;
+}
+
+</style>
 </head>
 <body>
 
 <h1>Documentación API Entrega 4</h1>
+<h2>Autores: Grupo 4 y 33 </h2>
 <h2>Proposito:</h2>
 <p>El proposito de esta Web API es exponer en formato JSON información sobre una filtración de mensajes enviados por muchas celebridades del mundo de la música, de una forma accesible y eficiente.</p>
+
 <h2>Funcionalidades:</h2>
-<h3>Busqueda por usuario</h3>
-<h4>url: bd11.ing.puc.cl/user/&lt;uid&gt;</h4>
-<p></p>
-<h3>Busqueda por mensaje</h3>
-<h4>url: bd11.ing.puc.cl/messages/&lt;mid&gt;</h4>
-<p></p>
-<h3>Busqueda por usuarios</h3>
-<h4>url: bd11.ing.puc.cl/users/&lt;uid1&gt;/&lt;uid2&gt;</h4>
-<p></p>
-<h3>Busqueda por fechas</h3>
-<h4>url: bd11.ing.puc.cl/filterdates/&lt;before&gt;/&lt;after&gt;/&lt;uid&gt;</h4>
-<p></p>
-<h3>Busqueda por usuario</h3>
-<h4>url: bd11.ing.puc.cl/user/&lt;uid&gt;</h4>
-<p></p>
-<h3>Busqueda por usuario</h3>
-<h4>url: bd11.ing.puc.cl/user/&lt;uid&gt;</h4>
-<p>This is a paragraph.</p>
+
+<h3>Busqueda por usuario por id</h3>
+<table style="width:80%">
+  <tr id="t02">
+    <th>Definición:</th>
+    <th>http://bd11.ing.puc.cl/user/&lt;uid&gt;</th> 
+  </tr>
+  <tr id="t01">
+    <th colspan="2">Parametros:</th>
+  </tr>
+  <tr id="t01">
+    <td>uid</td>
+    <td>Corresponde a el id del usuario (Debe ser un numero natural)</td> 
+  </tr>
+  <tr id="t02">
+    <td>Ejemplo:</td>
+    <td>http://bd11.ing.puc.cl/user/9</td> 
+  </tr>
+</table>
+<h4>Retorna la información del usuario que cumpla con el id entregado.</h4>
+
+<h3>Busqueda por mensaje por id</h3>
+<table style="width:80%">
+  <tr id="t02">
+    <th>Definición:</th>
+    <th>URL: bd11.ing.puc.cl/messages/&lt;mid&gt;</th> 
+  </tr>
+  <tr id="t01">
+    <th colspan="2">Parametros:</th>
+  </tr>
+  <tr id="t01">
+    <td>mid</td>
+    <td>Corresponde al ObjectId del mensaje (Debe ser un hex string de 24 bytes ó un binary string ó numero de 12 bytes)</td> 
+  </tr>
+  <tr id="t02">
+    <td>Ejemplo:</td>
+    <td>http://bd11.ing.puc.cl/messages/5a18df794ceb5169c08d7240</td> 
+  </tr>
+</table>
+<h4>Retorna la información del mensaje que cumpla con el id entregado.</h4>
+
+<h3>Busqueda de mensajes entre usuarios por id</h3>
+<table style="width:80%">
+  <tr id="t02">
+    <th>Definición:</th>
+    <th>http://bd11.ing.puc.cl/users/&lt;uid1&gt;/&lt;uid2&gt;</th> 
+  </tr>
+  <tr id="t01">
+    <th colspan="2">Parametros:</th>
+  </tr>
+  <tr id="t01">
+    <td>uid1</td>
+    <td>Corresponde a el id del usuario 1 (Debe ser un numero natural)</td> 
+  </tr>
+  <tr id="t01">
+    <td>uid2</td>
+    <td>Corresponde a el id del usuario 2 (Debe ser un numero natural)</td> 
+  </tr>
+  <tr id="t02">
+    <td>Ejemplo:</td>
+    <td>http://bd11.ing.puc.cl/users/9/15</td> 
+  </tr>
+</table>
+<h4>Retorna todos los mensajes intercambiados por dos usuarios segun los id entregados.</h4>
+
+<h3>Busqueda de mensajes por fechas con usuario por id</h3>
+<table style="width:80%">
+  <tr id="t02">
+    <th>Definición:</th>
+    <th>http://bd11.ing.puc.cl/filterdates/&lt;after&gt;/&lt;before&gt;/&lt;uid&gt;</th> 
+  </tr>
+  <tr id="t01">
+    <th colspan="2">Parametros:</th>
+  </tr>
+  <tr id="t01">
+    <td>after</td>
+    <td>Corresponde a la fecha inicio del intervalo a filtrar (Formato: YYYY-MM-DD)</td> 
+  </tr>
+  <tr id="t01">
+    <td>before</td>
+    <td>Corresponde a la fecha final del intervalo a filtrar (Formato: YYYY-MM-DD)</td> 
+  </tr>
+  <tr id="t01">
+    <td>uid</td>
+    <td>Corresponde a el id del usuario (Debe ser un numero natural. Si se ingresa <b>None</b>, se buscará todos los mensajes emitidos)</td> 
+  </tr>
+  <tr id="t02">
+    <td>Ejemplo:</td>
+    <td>http://bd11.ing.puc.cl/filterdates/2016-01-01/2016-12-01/9</td> 
+  </tr>
+</table>
+<h4>Retorna los mensajes entremedio de las fechas ingresadas, por el usuario especificado (si se aplica el caso).</h4>
+
+<h3>Busqueda de mensajes por ubicación</h3>
+<table style="width:80%">
+  <tr id="t02">
+    <th>Definición:</th>
+    <th>http://bd11.ing.puc.cl/filterloc/&lt;lat&gt;/&lt;lon&gt;/&lt;prec&gt;</th> 
+  </tr>
+  <tr id="t01">
+    <th colspan="2">Parametros:</th>
+  </tr>
+  <tr id="t01">
+    <td>lat</td>
+    <td>Corresponde a la coordenada de latitud que se desea filtrar</td> 
+  </tr>
+  <tr id="t01">
+    <td>lon</td>
+    <td>Corresponde a la coordenada de longitud que se desea filtrar</td> 
+  </tr>
+  <tr id="t01">
+    <td>prec</td>
+    <td>Corresponde a la precisión de la busqueda, es decir el radio donde se buscara (Si se ingresa un valor fuera del intervalo [0,1], se asumira un valor de 1)</td> 
+  </tr>
+  <tr id="t02">
+    <td>Syntaxis</td>
+    <td>Todos los parametros pueden ser un numero entero ó con decimales</td> 
+  </tr>
+  <tr id="t02">
+    <td>Ejemplo:</td>
+    <td>http://bd11.ing.puc.cl/filterloc/-36.3/-70.1/0.4</td> 
+  </tr>
+</table>
+<h4>Retorna los mensajes que se encuentran en el radio de precisión entregado con respecto a las coordenadas de latitud y longitud entregadas.</h4>
+
+<h3>Busqueda de mensajes por texto (Text Search)</h3>
+<table style="width:80%">
+  <tr id="t02">
+    <th>Definición:</th>
+    <th>http://bd11.ing.puc.cl/textsearch/&lt;must&gt;/&lt;may&gt;/&lt;not&gt;</th> 
+  </tr>
+  <tr id="t01">
+    <th colspan="2">Parametros:</th>
+  </tr>
+  <tr id="t01">
+    <td>must</td>
+    <td>Corresponde a la(s) palabra(s) que <b>deben</b> estar obligatoriamente en el mensaje</td> 
+  </tr>
+  <tr id="t01">
+    <td>may</td>
+    <td>Corresponde a la(s) palabra(s) que <b>pueden</b> estar en el mensaje</td> 
+  </tr>
+  <tr id="t01">
+    <td>not</td>
+    <td>Corresponde a la(s) palabra(s) que <b>no</b> deben estar en el mensaje</td> 
+  </tr>
+  <tr id="t02">
+    <td>Syntaxis</td>
+    <td>Si se desea agregar palabras, se separan con <b>%20</b>. Y si se desea dejar vacío, se utiliza <b>!433!</b>.</td> 
+  </tr>
+  <tr id="t02">
+    <td>Ejemplo:</td>
+    <td>http://bd11.ing.puc.cl/textsearch/bases%20de%20datos/!433!/cobreloa</td> 
+  </tr>
+</table>
+<h4>Retorna los mensajes que satisfagan las 3 condiciones entregadas, en orden según el puntaje asignado a la busqueda (puntaje se asigna en base a precisión de la busqueda).</h4>
+
+<h3>Busqueda de id por nombre</h3>
+<table style="width:80%">
+  <tr id="t02">
+    <th>Definición:</th>
+    <th>http://bd11.ing.puc.cl/finduid/&lt;name&gt;</th> 
+  </tr>
+  <tr id="t01">
+    <th colspan="2">Parametros:</th>
+  </tr>
+  <tr id="t01">
+    <td>name</td>
+    <td>Corresponde a el nombre del usuario</td> 
+  </tr>
+  <tr id="t02">
+    <td>Syntaxis</td>
+    <td>Nombre y apellido se separa con <b>%20</b>.</td> 
+  </tr>
+  <tr id="t02">
+    <td>Ejemplo:</td>
+    <td>http://bd11.ing.puc.cl/finduid/Martin$20Garrix</td> 
+  </tr>
+</table>
+<h4>Retorna el id del usuario al que le corresponda el nombre entregado.</h4>
+
 
 </body>
 </html>
