@@ -57,10 +57,9 @@ def find_users(uid=None):
                         'receptant': nombre
                     })
 
-        return jsonify('users', user_result)
+        return jsonify('user', user_result)
     except Exception as err:
         return 'Ocurrio un error: {}'.format(err)
-
 
 @app.route("/messages/<mid>")
 def find_msg(mid=None):
@@ -69,19 +68,20 @@ def find_msg(mid=None):
     """
     try:
         mid = ObjectId(str(mid))
-        result_msg = [i for i in messages.find(
-            {'_id': mid},
-            {'_id': 0})]
-        result_sender = [i for i in users.find(
-            {'id': result_msg[0]['sender']},
-            {'_id': 0})]
-        result_receptant = [i for i in users.find(
-            {'id': result_msg[0]['receptant']},
-            {'_id': 0})]
-        result_msg[0]['sender'] = result_sender[0]['name']
-        result_msg[0]['receptant'] = result_receptant[0]['name']
-        return jsonify('msg_info', result_msg)
-    except Exception:
+        msg_data = messages.find({'_id': mid}, {'_id': 0})
+        
+        result_msg = [i for i in msg_data]
+        for msg in result_msg:
+            sender_data = users.find({'id': msg['sender']},
+                                    {'_id': 0})
+            receptant_data = users.find({'id': msg['receptant']},
+                                    {'_id': 0})
+            result_sender = [i for i in sender_data]
+            result_receptant = [i for i in receptant_data]
+            msg['sender'] = result_sender[0]['name']
+            msg['receptant'] = result_receptant[0]['name']
+        return jsonify('message', result_msg)
+    except Exception as err:
         return 'Ocurrio un error: {}'.format(err)
 
 
@@ -128,30 +128,44 @@ def find_msg_by_user(uid1=None, uid2=None):
                             msg["receptant"] = user2["name"]
                         result.append(msg)
             print(result)
-            return jsonify("msgs", result)
-    except Exception:
+            return jsonify("users_messages", result)
+    except Exception as err:
+        return 'Ocurrio un error: {}'.format(err)
+
+@app.route("/filterdates/<fecha1>/<fecha2>/<uid>")
+def filtro_fecha(fecha1=None, fecha2=None, uid=None):
+    """ 
+
+    formato fecha es: "yyyy-mm-dd"
+    donde resultado es: fecha1 <= mensaje <= fecha2
+    """
+    try:
+        fecha1 = str(fecha1)
+        fecha2 = str(fecha2)
+        if uid != 'None':
+            uid = int(uid)
+            result = messages.find({'date': {'$gte': fecha1, '$lte': fecha2}, 'sender': uid}, {'_id': 0})
+        else:
+            result = messages.find({'date': {'$gte': fecha1, '$lte': fecha2}}, {'_id': 0})
+        result = [r for r in result]
+        return jsonify('filter_dates', result)
+
+    except Exception as err:
         return 'Ocurrio un error: {}'.format(err)
 
 
-# text search
-@app.route("/must-be/<text>")
-def must_be(text=None):
-    """
-    text debe ser:
-        frase!20!1%20frase!20!2%20frase!20!3%20...%20frase!20!N
-    """
+@app.route("/filterloc/<lat>/<lon>/<pres>")
+def filtro_localizacion(lat=None, lon=None, pres=None):
     try:
-        t = '\"'
-        t += '\" \"'.join(str(text).split(' ')) + '\"'
-        print(t)
-        new_t = t.replace('!20!', ' ')
-        print(new_t)
-        result = messages.find({'$text': {'$search': "{}".format(new_t)}},
-                               {'score': {'$meta': "textScore"},
-                                '_id': 0}).sort(
-            [('score', {'$meta': "textScore"})])
+        lat = float(lat)
+        lon = float(lon)
+        pres = float(pres)
+        if not (0 < pres <= 1):
+            pres = 1
+        result = messages.find({'lat': {'$gte': lat-pres, '$lte': lat+pres }, 
+            'long': {'$gte': lon-pres, '$lte': lon+pres}},{'_id': 0})
         result = [r for r in result]
-        return jsonify('must_be', result)
+        return jsonify('filter_location', result)
     except Exception as err:
         return 'Ocurrio un error: {}'.format(err)
 
@@ -186,9 +200,20 @@ def text_search(must=None, may=None, _not=None):
                                 '_id': 0}).sort(
             [('score', {'$meta': "textScore"})])
         result = [r for r in result]
-        return jsonify('must_be', result)
+        return jsonify('text_search', result)
     except Exception as err:
         return 'Ocurrio un error: {}'.format(err)
+
+@app.route("/finduid/<name>")
+def find_uid(name=None):
+    try:
+        name = str(name)
+        result = users.find({'name': name}, {'_id': 0, 'id': 1})
+        result = [r for r in result]
+        return jsonify('user_id', result)
+    except Exception as err:
+        return 'Ocurrio un error: {}'.format(err)
+
 
 if __name__ == '__main__':
     app.run(port=8080)
